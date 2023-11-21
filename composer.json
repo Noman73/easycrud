@@ -1,0 +1,25 @@
+{
+    "name": "noman/easycrud",
+    "description": "make crud easily",
+    "type": "bibrary",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Noman73"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Noman\\Easycrud\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Noman\\Easycrud\\CrudServiceProvider"
+            ]
+        }
+    }
+}

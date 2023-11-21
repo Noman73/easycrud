@@ -14,6 +14,9 @@ class CrudServiceProvider extends ServiceProvider{
            $this->publishes([
                 __DIR__.'/assets' => public_path('easycrud/assets'),
             ], 'public');
+            $this->publishes([
+                __DIR__ . 'migrations/' => database_path('migrations'),
+            ], 'easycrud-migrations');
     }
 
     public function register()

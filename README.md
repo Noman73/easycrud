@@ -9,4 +9,3 @@
 ## Documentations
 
 - [Github Docs](https://github.com/Noman73/easycrud)
-- [Laravel DataTables Documentation](https://yajrabox.com/docs/laravel-datatables)

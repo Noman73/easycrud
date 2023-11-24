@@ -24,15 +24,16 @@ class Easycrud{
     {
         $crud = $data;
         $form=EasycrudForm::where("name",$crud['_name'])->first();
+        $validation = str_replace(["\n"], "", $form->validation);
         unset($crud['_name']);
-        if($form->before_code!=null){
+        if($form->before_code!='null'){
             eval($form->before_code);
         }
         // return $crud;
-        $validator = Validator::make($crud, json_decode($form->validation));
+        $validator = Validator::make($crud, eval("return $validation"));
         if ($validator->passes()) {
             $store = $form->model::create($crud);
-            if(isset($form->after_code)){
+            if($form->after_code!='null'){
                 eval($form->after_code);
             }
             if ($store) {
@@ -56,7 +57,7 @@ class Easycrud{
         // return eval("return $validation");
         unset($crud['_name']);
         unset($crud['form_data_id']);
-        if($form->before_code!=null){
+        if($form->before_code!='null'){
             eval($form->before_code);
         }
         // return json_decode($form->validation);

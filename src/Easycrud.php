@@ -22,8 +22,6 @@ class Easycrud{
     }
     public  function store($data)
     {
-// return $data;
-// $this->register[$data['_name']];
         $crud = $data;
         $form=EasycrudForm::where("name",$crud['_name'])->first();
         unset($crud['_name']);
@@ -51,15 +49,19 @@ class Easycrud{
     }
     public  function update($data)
     {
+        
         $crud = $data;
-
         $form=EasycrudForm::where("name",$data['_name'])->first();
+        $validation = str_replace(["\n"], "", $form->validation);
+        // return eval("return $validation");
         unset($crud['_name']);
         unset($crud['form_data_id']);
         if($form->before_code!=null){
             eval($form->before_code);
         }
-        $validator = Validator::make($crud, json_decode($form->validation));
+        // return json_decode($form->validation);
+        
+        $validator = Validator::make($crud, eval("return $validation"));
 
         if ($validator->passes()) {
             $store=$form->model::find($data['form_data_id']);

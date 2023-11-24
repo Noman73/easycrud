@@ -1,5 +1,8 @@
 <script>
     var datatable;
+    var validation;
+    var before_code;
+    var after_code;
     $(document).ready(function(){
         datatable= $('#datatables').DataTable({
         processing:true,
@@ -49,9 +52,9 @@ window.formRequest= function(){
     let model=$('#model').val();
     let styles=$('#styles').val();
     let classes=$('#classes').val();
-    let before_code=$('#before_code').val();
-    let after_code=$('#before_code').val();
-    let validation=$('#validation').val();
+    let before_code_val=before_code.getValue();
+    let after_code_val=after_code.getValue();
+    let validation_val=validation.getValue();
     let message=$('#message').val();
     let column=$('#column').val();
     let id=$('#id').val();
@@ -63,9 +66,9 @@ window.formRequest= function(){
     formData.append('model',model);
     formData.append('styles',styles);
     formData.append('classes',classes);
-    formData.append('before_code',before_code);
-    formData.append('after_code',after_code);
-    formData.append('validation',validation);
+    formData.append('before_code',before_code_val);
+    formData.append('after_code',after_code_val);
+    formData.append('validation',validation_val);
     formData.append('message',message);
     formData.append('column',column);
     $('#exampleModalLabel').text("Add New {{$data['title']}}");
@@ -90,7 +93,7 @@ window.formRequest= function(){
             }
         })
     }else{
-      axios.post("{{URL::to('admin/category/')}}/"+id,formData)
+      axios.post("{{URL::to('easy-crud/forms/')}}/"+id,formData)
         .then(function (response){
           if(response.data.message){
               toastr.success(response.data.message);
@@ -122,8 +125,14 @@ $(document).delegate(".editRow", "click", function(){
         if(key=='name'){
           $('#'+'name').val(data.data[key]);
         }
-        if(key=='category_id'){
-          $('#category').val(data.data[key]).niceSelect('update');
+        if(key=='validation'){
+          validation.setValue(`${data.data[key]}`);
+        }
+        if(key=='before_code'){
+          before_code.setValue(`${data.data[key]}`);
+        }
+        if(key=='after_code'){
+          after_code.setValue(`${data.data[key]}`);
         }
          $('#'+key).val(data.data[key]);
          $('#modal').modal('show');
@@ -161,4 +170,25 @@ function clear(){
   $("input").removeClass('is-invalid').val('');
   $(".invalid-feedback").text('');
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    before_code = CodeMirror.fromTextArea(document.getElementById('before_code'), {
+      mode: 'php',
+      theme: 'dracula', // You can choose a different theme
+      lineNumbers: true,
+      autofocus: true,
+    });
+    after_code = CodeMirror.fromTextArea(document.getElementById('after_code'), {
+      mode: 'php',
+      theme: 'dracula', // You can choose a different theme
+      lineNumbers: true,
+      autofocus: true,
+    });
+     validation=CodeMirror.fromTextArea(document.getElementById('validation'), {
+      mode: 'javascript',
+      theme: 'dracula', // You can choose a different theme
+      lineNumbers: true,
+      autofocus: true,
+    });
+});
 </script>

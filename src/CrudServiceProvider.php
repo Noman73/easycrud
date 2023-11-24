@@ -15,12 +15,12 @@ class CrudServiceProvider extends ServiceProvider{
                 __DIR__.'/assets' => public_path('easycrud/assets'),
             ], 'public');
            $this->publishes([
-                __DIR__ . 'migrations/' => database_path('migrations'),
-           ], 'easycrud-migrations');
+                __DIR__ . 'migrations/' => database_path('database/migrations'),
+           ], 'database');
     }
 
     public function register()
     {
-
+        
     }
 }

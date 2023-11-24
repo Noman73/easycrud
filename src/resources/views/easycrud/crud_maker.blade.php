@@ -13,7 +13,7 @@
 @endpush
  {{-- @section('easycrud::content')  --}}
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    {{-- <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -27,10 +27,10 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    </div> --}}
     <!-- /.content-header -->
     <!-- Main content -->
-    <section class="content">
+  
       <div class="container-fluid">
         <div class="card ">
             <div class="card-header bg-dark">
@@ -49,7 +49,7 @@
                   <tr>
                     <th>SL</th>
                     @foreach ($datatable_column as $th)
-                    <th>{{ucwords(str_replace('_',' ',$th))}}</th>
+                      <th>{{ucwords(str_replace('_',' ',$th))}}</th>
                     @endforeach
                   </tr>
                 </thead>
@@ -70,13 +70,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form style="{{$formdata->styles}}" class="{{$formdata->classes}}">
                 <input type="hidden" id="id">
                 <div class="row">
                   @foreach($data['fields'] as $field)
-                  <div class="col-md-8 mr-auto ml-auto">
-                    {!! Noman\Easycrud\FormMaker::FormMaker($field) !!}
-                  </div>
+                    {!! Noman\Easycrud\FormMaker::FormMaker($field,$formdata->column) !!}
                   @endforeach
                 </div>
               </form>
@@ -89,7 +87,6 @@
         </div>
       </div>
       {{-- endmodal --}}
-    </section>
   {{-- @endsection --}}
   @push('easycrud-script')
   <script src="{{asset('easycrud/assets/js/jquery.dataTables.min.js')}}"></script>

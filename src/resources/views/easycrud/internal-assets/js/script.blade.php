@@ -53,7 +53,8 @@ window.formRequest= function(){
               var keys=Object.keys(response.data.errors);
               keys.forEach(function(d){
                 $('#'+d).addClass('is-invalid');
-                $('#'+d+'_msg').text(response.data.error[d][0]);
+                $('#'+d+'_msg').text(response.data.errors[d][0]);
+                $("#"+d+"_msg").show();
               })
             }
         })
@@ -68,7 +69,8 @@ window.formRequest= function(){
               var keys=Object.keys(response.data.errors);
               keys.forEach(function(d){
                 $('#'+d).addClass('is-invalid')
-                $('#'+d+'_msg').text(response.data.error[d][0]);
+                $('#'+d+'_msg').text(response.data.errors[d][0]);
+                $('#'+d+'_msg').show();
               })
             }
         })

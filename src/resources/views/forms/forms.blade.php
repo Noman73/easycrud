@@ -2,16 +2,41 @@
 @section('easycrud::link')
 <link rel="stylesheet" href="{{asset('easycrud/assets/css/dataTables.bootstrap4.min.css')}}">
  <link rel="stylesheet" href="{{asset('easycrud/assets/css/responsive.bootstrap4.min.css')}}">
- <link href="{{asset('easycrud/assets/editor/css/cloudEdit.min.css')}}" rel="stylesheet">
-  <link href="{{asset('easycrud/assets/editor/css/contextMenu.min.css')}}" rel="stylesheet">
-@endsection
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/dracula.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.css" integrity="sha512-pxzljms2XK/DmQU3S58LhGyvttZBPNSw1/zoVZiYmYBvjDQW+0K7/DVzWHNz/LeiDs+uiPMtfQpgDeETwqL+1Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+/* Custom styles for line numbers */
+.CodeMirror {
+  border: 1px solid #ccc;
+  /* padding-left: 20px; */
+  max-height:200px;
+}
+.CodeMirror-line span{
+  padding-left:30px;
+  padding-right:0px !important;
+}
+.CodeMirror-linenumber {
+  /* margin-left: -30px !important; */
+  padding-left:5px;
+  color: #555;
+}
+
+.CodeMirror-gutters {
+  border-right: 1px solid #ccc;
+  background-color: #f5f5f5;
+  
+}
+</style>
+ @endsection
 @section('easycrud::content')
    <!-- Content Header (Page header) -->
    <div class="content-header">
      <div class="container-fluid">
        <div class="row mb-2">
-         <div class="col-sm-6">
-           <h1 class="m-0">{{$data['title']}}</h1>
+         <div class="col-sm-6 text-left">
+           <h1 class="float-left">{{$data['title']}}</h1>
          </div><!-- /.col -->
          <div class="col-sm-6">
            <ol class="breadcrumb float-sm-right">
@@ -30,8 +55,8 @@
        <div class="card ">
            <div class="card-header bg-dark">
              <div class="row">
-               <div class="col-6">
-                 <div class="card-title">{{$data['title']}} </div>
+               <div class="col-6 ">
+                 <div class="card-title text-left"> {{$data['title']}} </div>
                </div>
                <div class="col-6">
                  <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal" data-whatever="@mdo">নতুন</button>
@@ -115,7 +140,7 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Before Code:</label>
-                    <textarea id="js" type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
+                    <textarea type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
                     <div class="invalid-feedback" id="before_code_msg">
                     </div>
                 </div>
@@ -164,12 +189,11 @@
  <script src="{{asset('easycrud/assets/js/responsive.bootstrap4.min.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  {{-- for editor --}}
- <script src="{{asset('easycrud/assets/editor/js/ace/ace.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/ace/ext-emmet.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/ace/emmet.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/jquery.ui.position.min.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/contextMenu.min.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/jqconsole.min.js')}}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{asset('easycrud/assets/editor/js/cloudEdit.min.js')}}" type="text/javascript" charset="utf-8"></script>
- @include('easycrud::views.forms.internal-assets.js.script')
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+
+ {{--/ code editor --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js" integrity="sha512-lhtxV2wFeGInLAF3yN3WN/2wobmk+HuoWjyr3xgft42IY0xv4YN7Ao8VnYOwEjJH1F7I+fadwFQkVcZ6ege6kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  @include('easycrud::views.forms.internal-assets.js.script')
  @endsection

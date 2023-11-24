@@ -3,7 +3,7 @@
 namespace Noman\Easycrud;
 // use View;
 
-use App\Models\EasycrudForm;
+use Noman\Easycrud\Models\EasycrudForm;
 use Validator;
 class Easycrud{
     public function __construct()

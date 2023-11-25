@@ -21,8 +21,8 @@ class CrudMakerController extends Controller
               ->addIndexColumn()
               ->addColumn('action', function ($get) use ($form) {
                 $button = '<div class="d-flex justify-content-center">';
-                $button .= '<a data-url="' . url('easy-crud/crud_maker/edit') . '" data-id="' . strval($get->id) . '" data-form="' . $form->name . '"  href="javascript:void(0)" class="btn btn-primary shadow btn-xs sharp me-1 editRow"><i class="fas fa-pencil-alt"></i></a>';
-                $button .= '<a data-url="' . url('easy-crud/crud_maker/destroy') . '" data-id="' . strval($get->id) . '" data-form="' . $form->name . '" href="javascript:void(0)" class="btn btn-danger shadow btn-xs sharp ml-1 deleteRow"><i class="fa fa-trash"></i></a>';
+                $button .= '<a data-url="' . url('easy-crud/crud_maker/edit') . '" data-id="' . strval($get->id) . '" data-form="' . $form->name . '"  href="javascript:void(0)" class="btn btn-primary shadow btn-sm btn-xs sharp me-1 editRow"><i class="fas fa-pencil-alt"></i></a>';
+                $button .= '<a data-url="' . url('easy-crud/crud_maker/destroy') . '" data-id="' . strval($get->id) . '" data-form="' . $form->name . '" href="javascript:void(0)" class="btn btn-danger shadow btn-sm btn-xs sharp ml-1 deleteRow"><i class="fa fa-trash"></i></a>';
                 $button .= '</div>';
                 return $button;
              })

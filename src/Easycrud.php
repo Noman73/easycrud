@@ -67,7 +67,7 @@ class Easycrud{
         if ($validator->passes()) {
             $store=$form->model::find($data['form_data_id']);
             $get = $store->update($crud);
-            if($form->after_code!=null){
+            if($form->after_code!='null'){
                 eval($form->after_code);
             }
             if ($get) {

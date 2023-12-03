@@ -6,10 +6,11 @@ namespace Noman\Easycrud;
 use Noman\Easycrud\Models\EasycrudForm;
 use Validator;
 class Easycrud{
-    public function __construct()
-    {
-        //  $this->initPage($data);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(config('easycrud.middlware'));
+    //     //  $this->initPage($data);
+    // }
 
     
     public static function initPage($data)

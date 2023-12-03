@@ -9,6 +9,10 @@ use DataTables;
 use Validator;
 class FormController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(config('easycrud.middleware'));
+    }
     public function index()
     {
         $data=[

@@ -10,6 +10,10 @@ use Validator;
 use Noman\Easycrud\Easycrud;
 class CrudMakerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(config('easycrud.middleware'));
+    }
     public function index()
     {
 

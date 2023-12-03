@@ -2,7 +2,7 @@
 
 
 
-Route::group(['prefix'=>'easy-crud','namespace'=>"Noman\Easycrud\Http\Controllers"],function(){
+Route::group(['prefix'=>'easy-crud','middleware' => config('easycrud.route_group_middleware'),'namespace'=>"Noman\Easycrud\Http\Controllers"],function(){
 
     Route::get('/',function(){
         $data=[

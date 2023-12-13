@@ -2,9 +2,9 @@
 
 return [
     "middleware"=>[
-        "auth",
+        // "auth",
     ],
     'route_group_middleware'=>[
-        "web",
+        // "web",
     ],
 ];

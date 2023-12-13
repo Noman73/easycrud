@@ -11,6 +11,7 @@ Route::group(['prefix'=>'easy-crud','middleware' => config('easycrud.route_group
         return view('easycrud::test',compact('data'));
     });
     Route::resource('/forms',"FormController");
+    Route::resource('/message',"MessageController");
     Route::get('/noman',function(){
         return view('easycrud::test');
     });

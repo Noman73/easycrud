@@ -59,7 +59,7 @@
                  <div class="card-title text-left"> {{$data['title']}} </div>
                </div>
                <div class="col-6">
-                 <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modal" data-whatever="@mdo">Add New</button>
+                
                </div>
              </div>
            </div>
@@ -68,10 +68,10 @@
                <thead>
                  <tr>
                    <th>SL.</th>
-                   <th>name</th>
-                   <th>label</th>
-                   <th>model</th>
-                   <th>url</th>
+                   <th>From Name</th>
+                   <th>insert message</th>
+                   <th>update message</th>
+                   <th>delete message</th>
                    <th>Action</th>
                  </tr>
                </thead>
@@ -95,74 +95,27 @@
              <form>
                <input type="hidden" id="id">
                <div class="row">
-                 <div class="col-md-10 mr-auto ml-auto">
-                   <div class="form-group">
-                     <label for="recipient-name" class="col-form-label">Name:</label>
-                     <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                     <div class="invalid-feedback" id="name_msg">
-                     </div>
-                   </div>
-                   <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Label:</label>
-                      <input type="text" class="form-control" id="label" placeholder="Enter Label">
-                      <div class="invalid-feedback" id="label_msg">
-                      </div>
-                   </div>
-                   <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Datatable:</label>
-                      <input type="text" class="form-control" id="datatable" placeholder="Enter Table Column">
-                      <div class="invalid-feedback" id="datatable_msg">
+                 <div class="col-md-11 mr-auto ml-auto">
+                  <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Insert Message:</label>
+                      <input type="text" class="form-control" id="insert_message" placeholder="Enter message">
+                      <div class="invalid-feedback" id="insert_message_msg">
                       </div>
                   </div>
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Url:</label>
-                    <input type="text" class="form-control" id="url" placeholder="Enter url">
-                    <div class="invalid-feedback" id="url_msg">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Model:</label>
-                    <input type="text" class="form-control" id="model" placeholder="Enter Model">
-                    <div class="invalid-feedback" id="model_msg">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Styles:</label>
-                    <textarea type="text" class="form-control" id="styles" placeholder="Enter Styles"></textarea>
-                    <div class="invalid-feedback" id="styles_msg">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Classes:</label>
-                    <input type="text" class="form-control" id="classes" placeholder="Enter Classes">
-                    <div class="invalid-feedback" id="classes_msg">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Before Code:</label>
-                    <textarea type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
-                    <div class="invalid-feedback" id="before_code_msg">
-                    </div>
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">After Code:</label>
-                  <textarea type="text" class="form-control" id="after_code" placeholder="Enter Code"></textarea>
-                  <div class="invalid-feedback" id="after_code_msg">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Validation:</label>
-                  <textarea type="text" class="form-control" id="validation" placeholder="Enter Validation Array"></textarea>
-                  <div class="invalid-feedback" id="validation_msg">
-                </div>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Column:</label>
-                    <input type="text" class="form-control" id="column" placeholder="Enter column">
-                    <div class="invalid-feedback" id="column_msg">
-                    </div>
-                </div>
+                      <label for="recipient-name" class="col-form-label">Update Message:</label>
+                      <input type="text" class="form-control" id="update_message" placeholder="Enter message">
+                      <div class="invalid-feedback" id="update_message_msg">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Delete Message:</label>
+                      <input type="text" class="form-control" id="delete_message" placeholder="Enter message">
+                      <div class="invalid-feedback" id="delete_message_msg">
+                      </div>
+                  </div>
                 </div>
                </div>
-                 </div>
              </form>
            </div>
            <div class="modal-footer">
@@ -189,5 +142,5 @@
  {{--/ code editor --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js" integrity="sha512-lhtxV2wFeGInLAF3yN3WN/2wobmk+HuoWjyr3xgft42IY0xv4YN7Ao8VnYOwEjJH1F7I+fadwFQkVcZ6ege6kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  @include('easycrud::views.forms.internal-assets.js.script')
+  @include('easycrud::views.messages.internal-assets.js.script')
  @endsection

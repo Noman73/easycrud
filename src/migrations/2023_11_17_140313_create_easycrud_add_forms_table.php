@@ -23,8 +23,10 @@ return new class extends Migration
             $table->longText('before_code',100000)->nullable();
             $table->longText('after_code',100000)->nullable();
             $table->longText('validation',100000)->default("[]");
-            $table->string('message',200);
-            $table->string('column',200)->default(1);
+            $table->string('column',200)->default('1');
+            $table->string('insert_message',200)->nullable();
+            $table->string('delete_message',200)->nullable();
+            $table->string('update_message',200)->nullable();
             $table->timestamps();
         });
     }

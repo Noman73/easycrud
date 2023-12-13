@@ -91,7 +91,7 @@ $(document).delegate(".editRow", "click", function(){
     .then((data)=>{
       var editKeys=Object.keys(data.data);
       editKeys.forEach(function(key){
-         $('#'+key).val(data.data[key]);
+         $('#'+key).val(data.data[key]).change();
          $('#modal').modal('show');
          $('#id').val(data.data.id);
       })

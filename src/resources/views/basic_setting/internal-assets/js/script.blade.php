@@ -9,7 +9,7 @@
         serverSide:true,
         responsive:true,
         ajax:{
-          url:"{{url('easy-crud/message')}}"
+          url:"{{url('easy-crud/basic_setting')}}"
         },
         columns:[
           {
@@ -23,17 +23,10 @@
             name:'name',
           },
           {
-            data:'insert_message',
-            name:'insert_message',
+            data:'delete',
+            name:'delete',
           },
-          {
-            data:'update_message',
-            name:'update_message',
-          },
-          {
-            data:'delete_message',
-            name:'delete_message',
-          },
+          
           {
             data:'action',
             name:'action',
@@ -45,15 +38,16 @@
 
 window.formRequest= function(){
     $('input,select').removeClass('is-invalid');
-    let insert_message=$('#insert_message').val();
-    let update_message=$('#update_message').val();
-    let delete_message=$('#delete_message').val();
+    console.log($("#delete").is(":checked"));
+    if ($("#delete").is(":checked")) {
+        let deletes=1;
+    } else {
+        let deletes=0;
+    }
+    let deletes=$("#delete").is(":checked");
     let id=$('#id').val();
     let formData= new FormData();
-    console.log(delete_message);
-    formData.append('delete_message',delete_message);
-    formData.append('insert_message',insert_message);
-    formData.append('update_message',update_message);
+    formData.append('delete',deletes);
     $('#exampleModalLabel').text("Add New {{$data['title']}}");
     if(id!=''){
       formData.append('_method','PUT');
@@ -61,7 +55,7 @@ window.formRequest= function(){
     if (id==''){
         
     }else{
-      axios.post("{{URL::to('easy-crud/message/')}}/"+id,formData)
+      axios.post("{{URL::to('easy-crud/basic_setting/')}}/"+id,formData)
         .then(function (response){
           if(response.data.message){
               toastr.success(response.data.message);
@@ -90,7 +84,6 @@ $(document).delegate(".editRow", "click", function(){
     .then((data)=>{
       var editKeys=Object.keys(data.data);
       editKeys.forEach(function(key){
-      
          $('#'+key).val(data.data[key]);
          $('#modal').modal('show');
          $('#id').val(data.data.id);
@@ -127,5 +120,6 @@ function clear(){
   $("input").removeClass('is-invalid').val('');
   $(".invalid-feedback").text('');
 }
+
 
 </script>

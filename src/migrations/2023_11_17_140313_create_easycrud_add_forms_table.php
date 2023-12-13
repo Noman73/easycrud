@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('styles',1000)->nullable();
             $table->string('url',200)->nullable();
             $table->text('classes',1000)->nullable();
+            $table->longText('add_datatable_column',100000)->nullable();
             $table->longText('before_code',100000)->nullable();
             $table->longText('after_code',100000)->nullable();
             $table->longText('validation',100000)->default("[]");
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->string('insert_message',200)->nullable();
             $table->string('delete_message',200)->nullable();
             $table->string('update_message',200)->nullable();
+            $table->tinyInteger('delete')->default(0);
             $table->timestamps();
         });
     }

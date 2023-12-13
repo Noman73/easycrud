@@ -43,10 +43,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('easy-crud/forms')}}" class="nav-link">
+            <a href="{{url('easy-crud/message')}}" class="nav-link">
               <i class="nav-icon fas fa-plus"></i>
               <p>
                 Message Alert
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('easy-crud/basic_setting')}}" class="nav-link">
+              <i class="nav-icon fas fa-plus"></i>
+              <p>
+                Basic Setting
               </p>
             </a>
           </li>

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Noman\Easycrud\Models\EasycrudForm;
 use DataTables;
 use Validator;
-class MessageController extends Controller
+class BasicSettingController extends Controller
 {
     public function __construct()
     {
@@ -16,7 +16,7 @@ class MessageController extends Controller
     public function index()
     {
         $data=[
-            'title'=>"Message"
+            'title'=>"Basic Setting"
         ];
         if(request()->ajax()){
             $get=EasycrudForm::query();
@@ -28,9 +28,15 @@ class MessageController extends Controller
               $button.='</div>';
             return $button;
           })
-          ->rawColumns(['action'])->make(true);
+          ->addColumn('delete',function($get){
+            if($get->delete){
+               return  $delete="<span class='p-1 rounded bg-success'>On</span>";
+            }
+            return  $delete="<span class='p-1 rounded bg-danger'>Off</span>";
+        })
+          ->rawColumns(['action','delete'])->make(true);
         }
-        return view('easycrud::views.messages.message',compact('data'));
+        return view('easycrud::views.basic_setting.basic_setting',compact('data'));
     }
     /**
      * Show the form for creating a new resource.
@@ -45,21 +51,23 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-    //     // return $request->all();
-    //     $validator=Validator::make($request->all(),[
-    //       'insert_message'=>"required|max:200|min:1",
-    //       'update_message'=>"required|max:200|min:1",
-    //       'delete_message'=>"required|max:200|min:1",
-    //   ]);
-    //   if($validator->passes()){
-    //       $form=new EasycrudForm;
-    //       $form->insert_message=$request->insert_message;
-    //       $form->save();
-    //       if ($form) {
-    //           return response()->json(['message'=>'Message Added Success']);
-    //       }
-    //   }
-    //   return response()->json(['error'=>$validator->getMessageBag()]);
+        // return $request->all();
+        $validator=Validator::make($request->all(),[
+          'insert_message'=>"required|max:200|min:1",
+          'update_message'=>"required|max:200|min:1",
+          'delete_message'=>"required|max:200|min:1",
+      ]);
+      if($validator->passes()){
+          $form=new EasycrudForm;
+          $form->insert_message=$request->insert_message;
+          $form->update_message=$request->update_message;
+          $form->delete_message=$request->delete_message;
+          $form->save();
+          if ($form) {
+              return response()->json(['message'=>'Message Added Success']);
+          }
+      }
+      return response()->json(['error'=>$validator->getMessageBag()]);
     }
 
     /**
@@ -85,19 +93,15 @@ class MessageController extends Controller
     {
         // return $request->delete_message;
         $validator=Validator::make($request->all(),[
-            'insert_message'=>"nullable|max:200|min:1",
-            'update_message'=>"nullable|max:200|min:1",
-            'delete_message'=>"nullable|max:200|min:1",
+            'delete'=>"nullable|max:200|min:1",
         ]);
         if($validator->passes()){
             $form=EasycrudForm::find($id);
-            $form->insert_message=$request->insert_message;
-            $form->update_message=$request->update_message;
-            $form->delete_message=$request->delete_message;
+            $form->delete=($request->delete=='true' ? 1 :0 );
             $form->save();
             // return $request->delete_message;
             if ($form) {
-                return response()->json(['message'=>'Message Added Success']);
+                return response()->json(['message'=>'Basic Setting Added Success']);
             }
         }
         return response()->json(['error'=>$validator->getMessageBag()]);

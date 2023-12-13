@@ -69,9 +69,7 @@
                  <tr>
                    <th>SL.</th>
                    <th>From Name</th>
-                   <th>insert message</th>
-                   <th>update message</th>
-                   <th>delete message</th>
+                   <th>delete</th>
                    <th>Action</th>
                  </tr>
                </thead>
@@ -96,24 +94,10 @@
                <input type="hidden" id="id">
                <div class="row">
                  <div class="col-md-11 mr-auto ml-auto">
-                  <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Insert Message:</label>
-                      <input type="text" class="form-control" id="insert_message" placeholder="Enter message">
-                      <div class="invalid-feedback" id="insert_message_msg">
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Update Message:</label>
-                      <input type="text" class="form-control" id="update_message" placeholder="Enter message">
-                      <div class="invalid-feedback" id="update_message_msg">
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Delete Message:</label>
-                      <input type="text" class="form-control" id="delete_message" placeholder="Enter message">
-                      <div class="invalid-feedback" id="delete_message_msg">
-                      </div>
-                  </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="delete" value="0" >
+                      <label class="form-check-label" for="inlineCheckbox1">Delete</label>
+                    </div>
                 </div>
                </div>
              </form>
@@ -135,10 +119,10 @@
  <script src="{{asset('easycrud/assets/js/dataTables.responsive.min.js')}}"></script>
  <script src="{{asset('easycrud/assets/js/responsive.bootstrap4.min.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- {{-- for editor --}}
-
- {{--/ code editor --}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js" integrity="sha512-lhtxV2wFeGInLAF3yN3WN/2wobmk+HuoWjyr3xgft42IY0xv4YN7Ao8VnYOwEjJH1F7I+fadwFQkVcZ6ege6kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  @include('easycrud::views.messages.internal-assets.js.script')
+{{-- for editor --}}
+     
+{{--/ code editor --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.10.1/sweetalert2.min.js" integrity="sha512-lhtxV2wFeGInLAF3yN3WN/2wobmk+HuoWjyr3xgft42IY0xv4YN7Ao8VnYOwEjJH1F7I+fadwFQkVcZ6ege6kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@include('easycrud::views.basic_setting.internal-assets.js.script')
  @endsection

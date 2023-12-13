@@ -55,6 +55,7 @@ window.formRequest= function(){
     let before_code_val=before_code.getValue();
     let after_code_val=after_code.getValue();
     let validation_val=validation.getValue();
+    let add_datatable_column=datatable_column.getValue();
     let message=$('#message').val();
     let column=$('#column').val();
     let id=$('#id').val();
@@ -62,6 +63,7 @@ window.formRequest= function(){
     formData.append('name',name);
     formData.append('label',label);
     formData.append('datatable',datatable);
+    formData.append('add_datatable_column',add_datatable_column);
     formData.append('url',url);
     formData.append('model',model);
     formData.append('styles',styles);
@@ -185,6 +187,12 @@ document.addEventListener('DOMContentLoaded', function () {
       autofocus: true,
     });
      validation=CodeMirror.fromTextArea(document.getElementById('validation'), {
+      mode: 'javascript',
+      theme: 'dracula', // You can choose a different theme
+      lineNumbers: true,
+      autofocus: true,
+    });
+    datatable_column=CodeMirror.fromTextArea(document.getElementById('add_datatable_column'), {
       mode: 'javascript',
       theme: 'dracula', // You can choose a different theme
       lineNumbers: true,

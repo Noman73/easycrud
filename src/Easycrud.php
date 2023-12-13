@@ -38,7 +38,9 @@ class Easycrud{
                 eval($form->after_code);
             }
             if ($store) {
-                return response()->json(['status' => true, 'message' => $form->message]);
+                $msg=($form->insert_message!=null ? $form->insert_message : str_replace('_', ' ', $data['_name']) . ' Inserted Success');
+
+                return response()->json(['status' => true, 'message' => $msg,'data'=>$store]);
             }
         }
         return response()->json(['status' => false, 'errors' => $validator->getMessageBag()]);
@@ -72,7 +74,8 @@ class Easycrud{
                 eval($form->after_code);
             }
             if ($get) {
-                return response()->json(['status' => true, 'message' => str_replace('_', ' ', $data['_name']) . ' Updated Succes']);
+                $msg=($form->update_message!=null ? $form->update_message : str_replace('_', ' ', $data['_name']) . ' Updated Succes');
+                return response()->json(['status' => true, 'message' => $msg,'data'=>$get]);
             }
         }
         return response()->json(['status' => false, 'errors' => $validator->getMessageBag()]);
@@ -80,9 +83,12 @@ class Easycrud{
     public  function destroy($data)
     {
         $form=EasycrudForm::where("name",$data['_name'])->first();
-        $del = $form->model::find($data['id'])->delete();
-        if ($del) {
-            return response()->json(['status' => true, 'message' => str_replace('_', ' ', $data['_name']) . ' Deleted Succes']);
+        if($form->delete==1){
+            $del = $form->model::find($data['id'])->delete();
+            $msg=($form->delete_message!=null ? $form->delete_message : str_replace('_', ' ', $data['_name']) . ' Deleted Succes');
+            if ($del) {
+                return response()->json(['status' => true, 'message' => $msg]);
+            }
         }
         return response()->json(['status' => false, 'message' => str_replace('_', ' ', $data['_name']) . ' Failed to Destroy']);
     }

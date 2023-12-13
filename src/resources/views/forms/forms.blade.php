@@ -139,6 +139,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Add Datatable Column:</label>
+                    <textarea type="text" class="form-control" id="add_datatable_column" placeholder="Enter Code"></textarea>
+                    <div class="invalid-feedback" id="add_datatable_column_msg">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Before Code:</label>
                     <textarea type="text" class="form-control" id="before_code" placeholder="Enter Code"></textarea>
                     <div class="invalid-feedback" id="before_code_msg">

@@ -46,7 +46,7 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // return $request->all();
         $validator=Validator::make($request->all(),[
           'name'=>"required|max:200|min:1",
           'label'=>"required|max:200|min:1",

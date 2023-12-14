@@ -71,7 +71,6 @@ window.formRequest= function(){
     formData.append('before_code',before_code_val);
     formData.append('after_code',after_code_val);
     formData.append('validation',validation_val);
-    formData.append('message',message);
     formData.append('column',column);
     $('#exampleModalLabel').text("Add New {{$data['title']}}");
     console.log(id)

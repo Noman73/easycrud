@@ -20,7 +20,7 @@ composer require noman/easycrud
 
 #### Service Provider & Facade
 
-Register provider and facade on your `config/app.php` file.
+Register the provider and facade on your `config/app.php` file.
 ```php
 'providers' => [
     ...,
@@ -39,12 +39,12 @@ Register provider and facade on your `config/app.php` file.
 php artisan vendor:publish --provider="Noman\Easycrud\CrudServiceProvider"
 ```
 
-## then run this command 
+## Then run this command 
 
 ```bash
 php artisan migrate
 ```
-#### how to use | resources/views/test.blade.php
+#### How to use | resources/views/test.blade.php
 ```html
 @php
 $view= \Easycrud::initPage($data);
@@ -71,7 +71,7 @@ $view= \Easycrud::initPage($data);
 </body>
 </html>
 ```
-## use in your controller 
+## Use in your controller 
 ```php
             $data= [
                     'form'=>[
@@ -97,4 +97,4 @@ $view= \Easycrud::initPage($data);
                     ];
         return view("test",compact('data'));
 ```
-## then go to https://yourdomain/easy-crud/forms and fill up the forms 
+## Then go to https://yourdomain/easy-crud/forms and fill up the forms 
